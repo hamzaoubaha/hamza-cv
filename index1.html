@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oubaha Hamza - Developer Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --accent-color: #3b82f6;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --text-light: #ffffff;
+            --bg-overlay: rgba(15, 23, 42, 0.85);
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+        }
+        /* قسم تحميل السيرة الذاتية */
+        .resume-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            position: relative;
+        }
+
+        .resume-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23e2e8f0" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>') repeat;
+            opacity: 0.5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .header-line {
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            margin: 0 auto;
+            border-radius: 2px;
+        }
+
+        .resume-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+
+        .resume-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            position: relative;
+            border: 2px solid transparent;
+        }
+
+        .resume-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .resume-card.featured {
+            border-color: var(--primary-color);
+            transform: scale(1.05);
+        }
+
+        .resume-card.featured:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--primary-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 10;
+        }
+
+        .resume-preview {
+            height: 400px;
+            background: #f8fafc;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .preview-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .preview-header.modern-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            margin: -30px -30px 30px -30px;
+            padding: 30px;
+            border-bottom: none;
+        }
+
+        .preview-header.creative-header {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            margin: -30px -30px 30px -30px;
+            padding: 30px;
+            border-bottom: none;
+            position: relative;
+        }
+
+        .header-shape {
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 100px;
+            height: 100px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        .preview-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .preview-subtitle {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+
+        /* .preview-content {
+            space-y: 20px;
+        } */
+
+        .preview-section {
+            margin-bottom: 25px;
+        }
+
+        .section-title {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-title.colored {
+            color: var(--primary-color);
+        }
+
+        .section-title.creative {
+            color: #667eea;
+        }
+
+        .section-item {
+            height: 12px;
+            background: #e2e8f0;
+            border-radius: 6px;
+            margin-bottom: 8px;
+        }
+
+        .section-item:nth-child(2) { width: 85%; }
+        .section-item:nth-child(3) { width: 70%; }
+
+        .section-item.colored {
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            opacity: 0.3;
+        }
+
+        .section-item.creative {
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            opacity: 0.3;
+        }
+
+        .skills-preview {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .skill-item {
+            width: 60px;
+            height: 8px;
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+
+        .skill-item.modern {
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            opacity: 0.5;
+        }
+
+        .skill-item.creative {
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            opacity: 0.5;
+        }
+
+        .resume-info {
+            padding: 30px;
+        }
+
+        .resume-info h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+        }
+
+        .resume-info p {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .resume-features {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 25px;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .feature i {
+            color: #10b981;
+            font-size: 0.8rem;
+        }
+
+        .resume-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .download-btn, .preview-btn {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid var(--primary-color);
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .download-btn {
+            background: transparent;
+            color: var(--primary-color);
+        }
+
+        .download-btn:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+        }
+
+        .download-btn.primary {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .download-btn.primary:hover {
+            background: var(--secondary-color);
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4);
+        }
+
+        .preview-btn {
+            background: transparent;
+            color: #10b981;
+            border-color: #10b981;
+        }
+
+        .preview-btn:hover {
+            background: #10b981;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
+        }
+
+        .download-stats {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            padding: 40px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-item i {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .download-notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #10b981;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+
+        .download-notification.show {
+            transform: translateX(0);
+        }
+
+        .notification-content {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Modal للمعاينة */
+        .preview-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            backdrop-filter: blur(5px);
+        }
+
+        .preview-modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: white;
+            width: 90%;
+            max-width: 800px;
+            height: 90%;
+            max-height: 900px;
+            border-radius: 20px;
+            position: relative;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+            animation: slideUp 0.3s ease;
+            overflow: hidden;
+        }
+
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 30px;
+            border-bottom: 1px solid #e2e8f0;
+            background: #f8fafc;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .close-btn {
+            width: 40px;
+            height: 40px;
+            border: none;
+            background: #ef4444;
+            color: white;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .close-btn:hover {
+            background: #dc2626;
+            transform: scale(1.1);
+        }
+
+        .modal-body {
+            height: calc(100% - 80px);
+            overflow-y: auto;
+            padding: 40px;
+        }
+
+        .resume-full-preview {
+            background: white;
+            min-height: 100%;
+            padding: 40px;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        /* أنماط المعاينة الكلاسيكية */
+        .classic-preview .resume-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .classic-preview .name {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+        }
+
+        .classic-preview .title {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+        }
+
+        .classic-preview .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* أنماط المعاينة العصرية */
+        .modern-preview .resume-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 40px;
+            margin: -40px -40px 40px -40px;
+            text-align: center;
+        }
+
+        .modern-preview .name {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .modern-preview .title {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .modern-preview .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            font-size: 0.9rem;
+        }
+
+        /* أنماط المعاينة الإبداعية */
+        .creative-preview .resume-header {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 40px;
+            margin: -40px -40px 40px -40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .creative-preview .resume-header::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        .creative-preview .name {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .creative-preview .title {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .creative-preview .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            font-size: 0.9rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .resume-section-content {
+            margin-bottom: 30px;
+        }
+
+        .resume-section-content h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .modern-preview .resume-section-content h3 {
+            color: var(--primary-color);
+            border-bottom-color: var(--primary-color);
+        }
+
+        .creative-preview .resume-section-content h3 {
+            color: #667eea;
+            border-bottom-color: #667eea;
+        }
+
+        .experience-item, .education-item {
+            margin-bottom: 20px;
+            padding-left: 20px;
+            border-left: 3px solid #e2e8f0;
+        }
+
+        .modern-preview .experience-item,
+        .modern-preview .education-item {
+            border-left-color: var(--primary-color);
+        }
+
+        .creative-preview .experience-item,
+        .creative-preview .education-item {
+            border-left-color: #667eea;
+        }
+
+        .item-title {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 5px;
+        }
+
+        .item-company {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .item-duration {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+        }
+
+        .item-description {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .skill-category h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            background: #f1f5f9;
+            color: var(--text-primary);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            border: 1px solid #e2e8f0;
+        }
+
+        .modern-preview .skill-tag {
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .creative-preview .skill-tag {
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+            border-color: #667eea;
+        }
+
+        @media (max-width: 768px) {
+            .resume-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .resume-card.featured {
+                transform: none;
+            }
+            
+            .download-stats {
+                flex-direction: column;
+                gap: 30px;
+                text-align: center;
+            }
+            
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .modal-content {
+                width: 95%;
+                height: 95%;
+            }
+
+            .modal-body {
+                padding: 20px;
+            }
+
+            .resume-full-preview {
+                padding: 20px;
+            }
+
+            .contact-info {
+                flex-direction: column !important;
+                align-items: center;
+                gap: 10px !important;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- قسم تحميل السيرة الذاتية -->
+    <section class="resume-section" id="resume">
+        <div class="container">
+            <div class="section-header">
+                <h2>تحميل السيرة الذاتية</h2>
+                <p>اختر النموذج المناسب وقم بتحميل سيرتي الذاتية</p>
+                <div class="header-line"></div>
+            </div>
+            
+            <div class="resume-grid">
+                <!-- السيرة الذاتية الكلاسيكية -->
+                <div class="resume-card">
+                    <div class="resume-preview">
+                        <div class="preview-header">
+                            <div class="preview-title">Oubaha Hamza</div>
+                            <div class="preview-subtitle">Full Stack Developer</div>
+                        </div>
+                        <div class="preview-content">
+                            <div class="preview-section">
+                                <div class="section-title">خبرة عملية</div>
+                                <div class="section-item"></div>
+                                <div class="section-item"></div>
+                            </div>
+                            <div class="preview-section">
+                                <div class="section-title">التعليم</div>
+                                <div class="section-item"></div>
+                            </div>
+                            <div class="preview-section">
+                                <div class="section-title">المهارات</div>
+                                <div class="skills-preview">
+                                    <div class="skill-item"></div>
+                                    <div class="skill-item"></div>
+                                    <div class="skill-item"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="resume-info">
+                        <h3>النموذج الكلاسيكي</h3>
+                        <p>تصميم تقليدي وأنيق مناسب لجميع المجالات</p>
+                        <div class="resume-features">
+                            <span class="feature"><i class="fas fa-check"></i> سهل القراءة</span>
+                            <span class="feature"><i class="fas fa-check"></i> تصميم احترافي</span>
+                            <span class="feature"><i class="fas fa-check"></i> مناسب للطباعة</span>
+                        </div>
+                        <div class="resume-actions">
+                            <button class="preview-btn" onclick="previewResume('classic')">
+                                <i class="fas fa-eye"></i>
+                                معاينة السيرة الذاتية
+                            </button>
+                            <button class="download-btn" onclick="downloadResume('classic')">
+                                <i class="fas fa-download"></i>
+                                تحميل PDF
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- السيرة الذاتية العصرية -->
+                <div class="resume-card featured">
+                    <div class="featured-badge">الأكثر شعبية</div>
+                    <div class="resume-preview modern">
+                        <div class="preview-header modern-header">
+                            <div class="preview-title">Oubaha Hamza</div>
+                            <div class="preview-subtitle">Full Stack Developer & UI/UX Designer</div>
+                        </div>
+                        <div class="preview-content">
+                            <div class="preview-section">
+                                <div class="section-title colored">الخبرات</div>
+                                <div class="section-item colored"></div>
+                                <div class="section-item colored"></div>
+                            </div>
+                            <div class="preview-section">
+                                <div class="section-title colored">المشاريع</div>
+                                <div class="section-item colored"></div>
+                            </div>
+                            <div class="preview-section">
+                                <div class="section-title colored">التقنيات</div>
+                                <div class="skills-preview">
+                                    <div class="skill-item modern"></div>
+                                    <div class="skill-item modern"></div>
+                                    <div class="skill-item modern"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="resume-info">
+                        <h3>النموذج العصري</h3>
+                        <p>تصميم حديث بألوان جذابة للمجال التقني</p>
+                        <div class="resume-features">
+                            <span class="feature"><i class="fas fa-check"></i> تصميم عصري</span>
+                            <span class="feature"><i class="fas fa-check"></i> ألوان جذابة</span>
+                            <span class="feature"><i class="fas fa-check"></i> مناسب للتقنيين</span>
+                        </div>
+                        <div class="resume-actions">
+                            <button class="preview-btn" onclick="previewResume('modern')">
+                                <i class="fas fa-eye"></i>
+                                معاينة السيرة الذاتية
+                            </button>
+                            <button class="download-btn primary" onclick="downloadResume('modern')">
+                                <i class="fas fa-download"></i>
+                                تحميل PDF
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- السيرة الذاتية الإبداعية -->
+                <div class="resume-card">
+                    <div class="resume-preview creative">
+                        <div class="preview-header creative-header">
+                            <div class="header-shape"></div>
+                            <div class="preview-title">Oubaha Hamza</div>
+                            <div class="preview-subtitle">Developer & Designer</div>
+                        </div>
+                        <div class="preview-content">
+                            <div class="preview-section">
+                                <div class="section-title creative">نبذة</div>
+                                <div class="section-item creative"></div>
+                            </div>
+                            <div class="preview-section">
+                                <div class="section-title creative">الإنجازات</div>
+                                <div class="section-item creative"></div>
+                                <div class="section-item creative"></div>
+                            </div>
+                            <div class="preview-section">
+                                <div class="section-title creative">الأدوات</div>
+                                <div class="skills-preview">
+                                    <div class="skill-item creative"></div>
+                                    <div class="skill-item creative"></div>
+                                    <div class="skill-item creative"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="resume-info">
+                        <h3>النموذج الإبداعي</h3>
+                        <p>تصميم مبتكر وجريء للمبدعين والمصممين</p>
+                        <div class="resume-features">
+                            <span class="feature"><i class="fas fa-check"></i> تصميم مبتكر</span>
+                            <span class="feature"><i class="fas fa-check"></i> شكل جريء</span>
+                            <span class="feature"><i class="fas fa-check"></i> للمبدعين</span>
+                        </div>
+                        <div class="resume-actions">
+                            <button class="preview-btn" onclick="previewResume('creative')">
+                                <i class="fas fa-eye"></i>
+                                معاينة السيرة الذاتية
+                            </button>
+                            <button class="download-btn" onclick="downloadResume('creative')">
+                                <i class="fas fa-download"></i>
+                                تحميل PDF
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- إحصائيات التحميل -->
+            <div class="download-stats">
+                <div class="stat-item">
+                    <i class="fas fa-download"></i>
+                    <span class="stat-number">1,234</span>
+                    <span class="stat-label">تحميل</span>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-file-pdf"></i>
+                    <span class="stat-number">3</span>
+                    <span class="stat-label">نماذج متاحة</span>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-star"></i>
+                    <span class="stat-number">4.9</span>
+                    <span class="stat-label">تقييم</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- تنبيه التحميل -->
+    <div class="download-notification" id="downloadNotification">
+        <div class="notification-content">
+            <i class="fas fa-check-circle"></i>
+            <span>تم بدء التحميل بنجاح!</span>
+        </div>
+    </div>
+
+    <!-- Modal المعاينة -->
+    <div class="preview-modal" id="previewModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modalTitle">معاينة السيرة الذاتية</h3>
+                <button class="close-btn" onclick="closePreview()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="resume-full-preview" id="resumeContent">
+                    <!-- سيتم ملء المحتوى هنا بواسطة JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const downloadsElem = document.querySelector('.download-stats .stat-item:first-child .stat-number');
+            const savedCount = parseInt(localStorage.getItem('downloadCount'), 10);
+            if (!isNaN(savedCount)) {
+                downloadsElem.textContent = savedCount.toLocaleString('en-US');
+            }
+        });
+        // وظيفة تحميل السيرة الذاتية
+        function downloadResume(type) {
+            // إظهار تنبيه التحميل
+            const notification = document.getElementById('downloadNotification');
+            notification.classList.add('show');
+            
+            // إخفاء التنبيه بعد 3 ثوان
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+            
+            // هنا يمكنك إضافة رابط التحميل الفعلي
+            const resumeLinks = {
+                classic: 'CV_Hamza.pdf',
+                modern: 'CV_HAMZA2.pdf',  
+                creative: 'cv_hamza3.pdf'
+            };
+            
+            // محاكاة التحميل - في التطبيق الحقيقي ستستخدم الرابط الفعلي
+            console.log(`تحميل السيرة الذاتية: ${type}`);
+            
+            // يمكنك استخدام هذا الكود للتحميل الفعلي:
+            const link = document.createElement('a');
+            link.href = resumeLinks[type];
+            link.download = `Oubaha_Hamza_Resume_${type}.pdf`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            const downloadsElem = document.querySelector('.download-stats .stat-item:first-child .stat-number');
+            let count = parseInt(downloadsElem.textContent.replace(/,/g, '')) || 0;
+            count++;
+            downloadsElem.textContent = count.toLocaleString('en-US');
+
+            localStorage.setItem('downloadCount', count);
+        }
+
+        // وظيفة معاينة السيرة الذاتية
+        function previewResume(type) {
+            const modal = document.getElementById('previewModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const resumeContent = document.getElementById('resumeContent');
+            
+            // تحديد عنوان Modal
+            const titles = {
+                classic: 'معاينة السيرة الذاتية - النموذج الكلاسيكي',
+                modern: 'معاينة السيرة الذاتية - النموذج العصري',
+                creative: 'معاينة السيرة الذاتية - النموذج الإبداعي'
+            };
+            
+            modalTitle.textContent = titles[type];
+            
+            // إنشاء محتوى السيرة الذاتية
+            resumeContent.innerHTML = getResumeContent(type);
+            resumeContent.className = `resume-full-preview ${type}-preview`;
+            
+            // إظهار Modal
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // وظيفة إغلاق المعاينة
+        function closePreview() {
+            const modal = document.getElementById('previewModal');
+            modal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+
+        // إغلاق Modal عند النقر خارج المحتوى
+        document.getElementById('previewModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closePreview();
+            }
+        });
+
+        // إغلاق Modal بمفتاح ESC
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closePreview();
+            }
+        });
+
+        // وظيفة إنشاء محتوى السيرة الذاتية
+        function getResumeContent(type) {
+            const baseContent = {
+                name: 'Oubaha Hamza',
+                title: 'Full Stack Developer & UI/UX Designer',
+                contact: [
+                    '<i class="fas fa-envelope"></i> mahzaboha@gmail.com',
+                    '<i class="fas fa-phone"></i> +212 657494705',
+                    '<i class="fas fa-map-marker-alt"></i> Casablanca, Morocco',
+                    '<i class="fab fa-linkedin"></i> linkedin.com/in/hamza-oubaha-b8239b269/',
+                    '<i class="fab fa-github"></i> github.com/hamzaoubaha'
+                ],
+                summary: 'I\'m Oubaha Hamza, a Full Stack Web Developer with a passion for building modern, user-focused digital experiences. I specialize in UI/UX design and responsive web development.',
+                experience: [
+                    {
+                        title: 'Full Stack Developer',
+                        company: 'Self-Initiated Idea ',
+                        duration: '2023- ',
+                        description: 'A self-initiated project idea designed to combat procrastination using AI-guided focus sessions. FlowState Pro helps users transform scattered thoughts into clear, actionable tasks — achieving up to 3x more productivity in half the time. Showcases creativity, UX thinking, and interest in AI-driven solutions.'
+                    },
+                    {
+                        title: 'Freelance Web Developer',
+                        company: 'Fiverr & Workana Platforms',
+                        duration: ' now - 2023',
+                        description: 'Creating and customizing websites for clients using modern technologies. Collaborating remotely to deliver user-friendly, performance-optimized solutions tailored to each client’s goals.'
+                    }
+                ],
+                education: [
+                    {
+                        degree: 'Specialized Technical Training in Full Stack Web Development',
+                        school: 'L’Institut Spécialisé de la Formation de l’Offshoring – Casablanca',
+                        duration: '2023 - 2026',
+                        description: 'Hands-on training in both front-end and back-end development using HTML, CSS, JavaScript, PHP, and MySQL. Emphasis on real-world projects, user interface design, and practical application of programming skills.'
+                    }
+                ],
+                skills: {
+                    'Front-End Development': ['React.js', 'Vue.js', 'JavaScript', 'TypeScript', 'HTML5', 'CSS3', 'Sass'],
+                    'Back-End Development': ['Node.js', 'Express.js', 'Python', 'PHP', 'Laravel'],
+                    'database': ['MongoDB', 'MySQL', 'PostgreSQL', 'Redis'],
+                    'Tools and Technologies': ['Git', 'Docker', 'AWS', 'Linux', 'Figma', 'Adobe XD']
+                }
+            };
+
+            return `
+                <div class="resume-header">
+                    <h1 class="name">${baseContent.name}</h1>
+                    <p class="title">${baseContent.title}</p>
+                    <div class="contact-info">
+                        ${baseContent.contact.map(contact => `<span>${contact}</span>`).join('')}
+                    </div>
+                </div>
+
+                <div class="resume-section-content">
+                    <h3> Personal Summary </h3>
+                    <p>${baseContent.summary}</p>
+                </div>
+
+                <div class="resume-section-content">
+                    <h3>Work Experience</h3>
+                    ${baseContent.experience.map(exp => `
+                        <div class="experience-item">
+                            <h4 class="item-title">${exp.title}</h4>
+                            <p class="item-company">${exp.company}</p>
+                            <p class="item-duration">${exp.duration}</p>
+                            <p class="item-description">${exp.description}</p>
+                        </div>
+                    `).join('')}
+                </div>
+
+                <div class="resume-section-content">
+                    <h3>Education</h3>
+                    ${baseContent.education.map(edu => `
+                        <div class="education-item">
+                            <h4 class="item-title">${edu.degree}</h4>
+                            <p class="item-company">${edu.school}</p>
+                            <p class="item-duration">${edu.duration}</p>
+                            <p class="item-description">${edu.description}</p>
+                        </div>
+                    `).join('')}
+                </div>
+
+                <div class="resume-section-content">
+                    <h3>Technical Skills</h3>
+                    <div class="skills-grid">
+                        ${Object.entries(baseContent.skills).map(([category, skills]) => `
+                            <div class="skill-category">
+                                <h4>${category}</h4>
+                                <div class="skill-list">
+                                    ${skills.map(skill => `<span class="skill-tag">${skill}</span>`).join('')}
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        // تأثير التمرير للقائمة
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (navbar) {
+                if (window.scrollY > 50) {
+                    navbar.style.background = 'rgba(255,255,255,0.98)';
+                    navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.15)';
+                } else {
+                    navbar.style.background = 'rgba(255,255,255,0.95)';
+                    navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+                }
+            }
+        });
+
+        // تحريك العناصر عند التمرير
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // مراقبة بطاقات السيرة الذاتية
+        document.addEventListener('DOMContentLoaded', function() {
+            const resumeCards = document.querySelectorAll('.resume-card');
+            resumeCards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'all 0.6s ease';
+                card.style.transitionDelay = `${index * 0.2}s`;
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
